@@ -7,10 +7,11 @@ Created on Sat Dec 17 10:10:02 2022
 """
 
 import numpy as np
-from random import shuffle
+from random import shuffle, choice
 import time
 
 zero_patch = np.zeros((3,3), dtype = int)
+zero_to_eight = range(0, 9)
 
 def init_board():
     
@@ -70,11 +71,13 @@ def check(board, value, pos):
         
 def recurse(board):
     position = find_empty(board)
+    candidates = list(range(1, 10))
+    shuffle(candidates)
     if position:
-        for candidate in range(1, 10):
+        for candidate in candidates:
             if check(board, candidate, position):
                 board[position[0], position[1]] = candidate
-                # print(board)
+                print(board)
                 return recurse(board)
         # print("Unsolved")
         return False
@@ -104,3 +107,14 @@ def verify(board):
         for panel in np.hsplit(vert_slice, 3):
             panel_sums.append(np.sum(panel))
     print(panel_sums)
+    
+def redact(board, how_many=10):
+    new_board = board.copy()
+    coords = set()
+    while len(coords) < how_many:
+        coords.add((choice(zero_to_eight), choice(zero_to_eight)))
+    rows = [pair[0] for pair in coords]
+    cols = [pair[1] for pair in coords]
+    new_board[rows, cols] = 0
+    return new_board
+    
