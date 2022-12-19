@@ -69,35 +69,54 @@ def check(board, value, pos):
         return False
     return True
         
-def recurse(board):
+def recurse(board, nextpos=None, candidate=None):
+    copy_board = board.copy()
+    if nextpos:
+        board[nextpos[0], nextpos[1]] = candidate
+    # print(board)
     position = find_empty(board)
-    candidates = list(range(1, 10))
-    shuffle(candidates)
     if position:
+        # print(position)
+        candidates = list(range(1, 10))
+        shuffle(candidates)
         for candidate in candidates:
             if check(board, candidate, position):
-                board[position[0], position[1]] = candidate
-                print(board)
-                return recurse(board)
-        # print("Unsolved")
-        return False
+                # check if candidates left at this level
+                return recurse(board, position, candidate)
+        return copy_board # run out of candidates
     else:
-        return True
-
+        return board  # hit gold, no positions remain
+    
 def generate():
-    attempt = 0
+    attempt = 1
     start_time = time.time()
+    B    = init_board()
+    while True:
+        print(attempt)
+        newB = recurse(B)  # updates B until no more empty
+        if not find_empty(newB):
+            break
+        B    = init_board()
+        attempt += 1
+    stop_time = time.time()
+    the_time = stop_time - start_time
+    print(f"Complete; Time: {the_time}")
+    return newB
+
+def solve(board):
+    start_time = time.time()
+    attempt = 0
+    starting = board.copy()
     while True:
         # print(attempt)
-        B = init_board()
-        if not recurse(B):  # updates B until no more empty
-            attempt += 1
-            continue        # dead end, try new B
-        break  # solution found
+        newB = recurse(starting)  # updates B until no more empty
+        if not find_empty(newB):
+            break
+        attempt += 1
     stop_time = time.time()
     the_time = stop_time - start_time
     print(f"Solved; Time: {the_time}")
-    return B
+    return newB
 
 def verify(board):
     print(np.sum(board, axis=0))
