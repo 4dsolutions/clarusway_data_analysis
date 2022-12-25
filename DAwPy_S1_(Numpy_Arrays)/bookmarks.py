@@ -8,6 +8,13 @@ Created on Thu Oct 11 11:38:26 2018
 How to use LIKE keyword in SQLite:
 https://stackoverflow.com/questions/3498844/sqlite-string-contains-other-string-query
 
+This code uses a pattern based on the "context manager"
+wherein __enter__ is triggered by the 'with' keyword, 
+and __exit__ is triggered by exiting the scope.
+
+This pattern is commonly used for working with ordinary
+files and is here extended to connecting / disconnecting
+from a database.
 """
 
 import sqlite3 as sql
@@ -41,6 +48,18 @@ class DB:
         if oops:
             return False
         return True
+    
+    def add_bookmark(self):
+        """to be implemented"""
+        pass
+        
+    def remove_bookmark(self):
+        """to be implemented"""
+        pass
+    
+    def update_bookmark(self):
+        """to be implemented"""
+        pass
     
 def tag_filter(the_tag):
     
