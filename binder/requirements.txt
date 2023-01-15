@@ -7,8 +7,8 @@ statsmodels==0.11.1
 scipy
 patsy==0.5.1
 numpy
-matplotlib=3.6.2
-seaborn=0.12.1
+matplotlib==3.6.2
+seaborn==0.12.1
 plotly-geo
 psutil
 requests
