@@ -92,7 +92,7 @@ def generate():
     start_time = time.time()
     B    = init_board()
     while True:
-        print(attempt)
+        # print(".", end="")
         newB = recurse(B)  # updates B until no more empty
         if not find_empty(newB):
             break
@@ -100,7 +100,7 @@ def generate():
         attempt += 1
     stop_time = time.time()
     the_time = stop_time - start_time
-    print(f"Complete; Time: {the_time}")
+    print(f"\nComplete; Time: {the_time}")
     return newB
 
 def solve(board):

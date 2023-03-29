@@ -75,5 +75,5 @@ def tag_filter(the_tag):
 if __name__ == "__main__":
     # try %comedy%  %docs% %tool% and %glossary% too
     for record in tag_filter("%comedy%"):
-        print( record )
-
+        # print( record )
+        print("==\n{}\n{}".format(*record[:2]))
