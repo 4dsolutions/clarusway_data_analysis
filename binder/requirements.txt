@@ -9,7 +9,7 @@ scipy
 patsy==0.5.1
 numpy==1.21.5
 matplotlib==3.6.2
-seaborn=0.12.1
+seaborn==0.12.1
 plotly-geo
 psutil
 requests
