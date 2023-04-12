@@ -3,3 +3,5 @@ numpy
 plotly
 cufflinks
 seaborn
+lxml
+statsmodels
