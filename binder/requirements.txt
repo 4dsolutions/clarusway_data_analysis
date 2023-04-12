@@ -2,6 +2,7 @@ pandas
 numpy
 plotly
 cufflinks
+chart-studio
 seaborn
 lxml
 statsmodels
