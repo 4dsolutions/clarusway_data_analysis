@@ -1,0 +1,83 @@
+
+Greetings Friends --
+
+My name is Kirby Urner, and it has been my ongoing 
+privilege to serve as a Clarusway instructor along 
+the Data Analysis and Visualization Track.
+
+I bring a lot of experience teaching, and using Python
+to this work.  We meet live, online, for many hours 
+each week, during our most intensive period.  I am one
+of a sequence of instructors you will encounter, in 
+your journey of self reinvention.
+
+I also share materials asynchronously, via a shared 
+Slack channel and through my Github repository.  We 
+use Slack during our Zoom meetups as well.
+
+The Clarusway curriculum is well designed, and I enjoy
+being your tour guide within the Python ecosystem, 
+where we explore "array based computing", a defacto 
+standard way of programming in data science.
+
+We start out with numpy right away, but I also do 
+background forays into topics in core Python, helping
+you build your Python chops even as we start our climb
+through these tools specifically designed for data 
+scientists.
+
+Numpy lets you treat a whole rectangle of numbers as
+a single object.  We think in terms of rows and columns.
+From there we move to pandas, which is built around 
+numpy and which exercises a lot of the same kinds of
+thinking.
+
+Once you have a serious understanding of array based 
+computing and its application to statistical processes,
+we dive into data visualization.  Our ability to summarize
+and make decisions depends on visualizations and the 
+stories they tell.
+
+Throughout this tour of the core technologies, I take
+frequent side trips into neighboring areas.  None of these
+tools would be as easy to use were it not for Jupyter Labs
+and Jupyter Notebooks.  Once these topics are introduced,
+the door is open to LaTeX and Regular Expressions.  We
+start using databases.  We start talking about SQL and 
+SQLite.
+
+What I know many students will experience, as I do from 
+time to time, is a sense that there's an overwhelming 
+amount to know, and the tools are always changing.  However
+this is also your opportunity.  No one knows it all, and 
+there's always a way to start fresh on the ground floor 
+and get competitive, such that your skills are in demand.  
+What you need is to make smart investments with your time.  
+Train with tools that fit together, and which are likely 
+to stay around for awhile.  Clarusway has that figured 
+out for you.
+
+I do not work alone along this Clarusway Data Analysis 
+and Visualization Track.  You will have mentors.  You 
+will have other students.  You have our ever growing and 
+continually updated stash of relevant resources, 
+including our instructor videos.  You will be able to 
+interact with your mentors, and other students, in real
+time.  At the same time, enough of the curriculum is 
+self paced to give that sense of freedom and convenience
+that comes with distance education.
+
+I join the Zoom meetups coming from Portland, Oregon, a city
+known for its thriving hardware and software businesses.
+My background is in harvesting medical data for statistical
+analysis, in the context of a large hospital system.  I've
+also written a lot of client-specific computer database 
+applications.  I started using Python back in the 1990s,
+with version 1.6.  I have experience with many languages,
+and with serving in a teacher and trainer capacity.
+
+I will be following the well designed Clarusway curriculum 
+while sometimes bringing my own experience and perspective 
+to the material, giving you whatever insights I hope might 
+be useful to you.  I want to be one of your resources and 
+guides.  I look forward to your joining us.
