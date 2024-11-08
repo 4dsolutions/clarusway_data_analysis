@@ -9,6 +9,9 @@ Trial by Division:
     
 divide by all primes known so far 
 up to where we know we're covered
+
+Nov 8: added a generator function that returns
+an iterator over primes.
 """
 
 from math import sqrt, floor
