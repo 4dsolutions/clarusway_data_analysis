@@ -11,7 +11,7 @@ divide by all primes known so far
 up to where we know we're covered
 """
 
-from math import *
+from math import sqrt, floor
 
 primes = [2, 3]
 
