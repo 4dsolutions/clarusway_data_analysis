@@ -10,13 +10,29 @@ Trial by Division:
 divide by all primes known so far 
 up to where we know we're covered
 
+Suggestion: use with itertools.islice
+
+>>> from itertools import islice
+>>> primes_gen = iter_prime() # defined below
+
+>>> slice_of_primes = islice(primes_gen, 100, 201)
+
+>>> next(slice_of_primes)
+5869
+
+>>> next(slice_of_primes)
+5879
+
+>>> next(slice_of_primes)
+5881
+
 Nov 8: added a generator function that returns
 an iterator over primes.
 """
 
 from math import sqrt, floor
 
-primes = [2, 3]
+primes = [2, 3]  # global to all
 
 def isprime(n):
     limit = floor(sqrt(n))
@@ -38,6 +54,8 @@ def nextprime():
 
 def more(n):
     """
+    Add n more prime numbers to primes
+    
     Parameters
     ----------
     n : int
@@ -52,8 +70,10 @@ def more(n):
         nextprime()
         
 def iter_prime():
+    "A generator function"
     yield 2
     yield 3
     while True:
         yield nextprime()
+        
         
