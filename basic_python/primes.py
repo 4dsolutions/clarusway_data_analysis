@@ -75,5 +75,4 @@ def iter_prime():
     yield 3
     while True:
         yield nextprime()
-        
-        
+
