@@ -6,6 +6,8 @@ Created on Wed Nov 13 08:48:17 2024
 @author: kirbyurner
 """
 
+import numpy as np
+
 def pascal():
     """
     generate Pascal's triangle row-by-row
@@ -21,7 +23,25 @@ def pascal():
         yield row
         # e.g [0, 1, 3, 3, 1] + [1, 3, 3, 1, 0] = [1, 4, 6, 4, 1]
         row = [a + b for a, b in zip([0] + row, row + [0])]
-        
+
+def pascal2():
+    """
+    generate Pascal's triangle row-by-row using 
+    numpy ndarrays
+
+    Yields
+    ------
+    row : list
+        successive rows of Pascal's triangle.
+
+    """
+    row = np.array([1]) # starts here
+    zero= np.array([0])
+    while True:
+        yield row
+        # e.g [0, 1, 3, 3, 1] + [1, 3, 3, 1, 0] = [1, 4, 6, 4, 1]
+        # elementwise addition supported, so a simpler expression
+        row =  np.hstack((row, zero)) + np.hstack((zero, row))        
 
 class Pascal:
     """
