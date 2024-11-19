@@ -15,6 +15,8 @@ https://mathworld.wolfram.com/FibonacciNumber.html
 24157817, 39088169, 63245986, 102334155
 """
 
+from itertools import takewhile
+
 def fibs():
     """
     generate the Fibonacci sequence
@@ -28,3 +30,6 @@ def fibs():
         yield seed[-1]  # yield rightmost
         seed = seed[1:] # drop leftmost
         
+if __name__ == "__main__":
+    f = fibs()
+    print(list(takewhile(lambda x: x < 1000, f)))
