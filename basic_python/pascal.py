@@ -4,9 +4,12 @@
 Created on Wed Nov 13 08:48:17 2024
 
 @author: kirbyurner
+
+Nov 18-19, 2024:  add numpy.array option + Pascal class iterator
 """
 
 import numpy as np
+
 
 def pascal():
     """
@@ -27,7 +30,7 @@ def pascal():
 def pascal2():
     """
     generate Pascal's triangle row-by-row using 
-    numpy ndarrays
+    numpy ndarrays -- looking ahead to Data Analysis
 
     Yields
     ------
@@ -65,10 +68,10 @@ class Pascal:
         
     def __next__(self):
         if not self.row:
-            self.row = [1]
-            return [1] # first time only
-        self.row = [a + b for a, b 
-                    in zip([0] + self.row, self.row + [0])]
+            self.row = np.array([1])
+            return self.row # first time only
+        self.row = (np.hstack((self.row, np.array([0]))) +
+                    np.hstack((np.array([0], self.row))))
         return self.row
     
     def __iter__(self):
@@ -78,4 +81,7 @@ class Pascal:
         both __next__ and __iter__.
         """
         return self
-        
+
+if __name__ == "__main__":
+    # optionally use this syntax to call stuff when run top level
+    help(__name__)
