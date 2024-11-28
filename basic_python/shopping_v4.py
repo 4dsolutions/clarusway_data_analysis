@@ -25,10 +25,13 @@ class SuperMarket:
     Persists buyable items in a json file.
     Initializes with 0 cash
     """
+    def __init__(self, source):
+        self.source = source
     
-    def __init__(self):
-        self.inventory = Inventory("the_stuff.json")
+    def __enter__(self):
+        self.inventory = Inventory(self.source)
         self.cash = 0
+        return self
         
     def buy(self, shopper, item, how_many):
         """
@@ -38,8 +41,8 @@ class SuperMarket:
         if item in self.inventory.wares: # check keys
             price = self.inventory.wares[item][0]
             try:
-                shopper.add_item(item, price, how_many)
                 self.inventory.remove_item(item, how_many)
+                shopper.add_item(item, price, how_many)
                 self.cash += price * how_many
             except NoMoney:
                 # print("Customer out of money")
@@ -48,7 +51,7 @@ class SuperMarket:
                 # print("Don't have enough in stock")
                 raise
 
-    def close(self):
+    def __exit__(self, *oops):
         """
         write json file
         """
@@ -84,14 +87,16 @@ class Inventory:
     """
     
     def __init__(self, the_file):
+        print("Loading inventory...")
         self.storage = the_file
         with open(the_file, 'r') as warehouse:
             self.wares = json.load(warehouse)
-    
-    def save_items(self):
-        with open(self.storage, 'w') as warehouse:  
-            json.dump(self.wares, warehouse, indent=4)
-        
+            
+    def save_items(self):    
+        print("Saving inventory...")
+        with open(self.storage, 'w') as warehouse:
+            json.dump(self.wares, warehouse)
+            
     def remove_item(self, item, qty):
         if qty > self.wares[item][1]:
             raise OutOfStock
@@ -109,24 +114,23 @@ def test_data():
         json.dump(stuff, warehouse, indent=4)
             
 def simulation():
+    
     test_data()  # initialize the_stuff.json
     kirby = Shopper("Kirby", 1000)
-    market = SuperMarket()
-    try:
-        market.buy(kirby, "Snicker-Snacks", 2)
-        market.buy(kirby, "Polly's Peanuts", 1)
-        market.buy(kirby, "Dr. Soap", 5)  # triggers exception
-    except NoMoney:
-        pass
-        print("Uh oh, out of money!")
-    except OutOfStock:
-        pass
-        print("Uh oh, out of stock!")
-        
-    print(kirby)
-    print(market.inventory.wares)
-    market.close()
-    print(market)
+    
+    with SuperMarket("the_stuff.json") as market:
+        try:
+            market.buy(kirby, "Snicker-Snacks", 2)
+            market.buy(kirby, "Polly's Peanuts", 2)
+            market.buy(kirby, "Dr. Soap", 2)  # triggers exception
+        except NoMoney:
+            print("Uh oh, out of money!")
+        except OutOfStock:
+            print("Uh oh, out of stock!")
+        else:
+            print(kirby)
+            print(market.inventory.wares)
+            print(market)
 
 if __name__ == "__main__":
     simulation()
